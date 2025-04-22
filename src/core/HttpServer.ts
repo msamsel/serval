@@ -1,7 +1,5 @@
-import {
-  type HttpServerConfiguration,
-  getDefault,
-} from "./HttpServerConfiguration.ts";
+import { strict as assert } from "node:assert";
+import { type HttpServerConfiguration } from "./HttpServerConfiguration.ts";
 import * as http from "node:http";
 
 export class HttpServer {
@@ -20,8 +18,17 @@ export class HttpServer {
     request: http.IncomingMessage,
     response: http.ServerResponse,
   ) {
-    response.statusCode = 200;
-    response.setHeader("Content-Type", "text/plain");
-    response.end("Hello world");
+    assert(typeof request.url === "string");
+    const url = URL.parse(request.url);
+    assert(url instanceof URL);
+
+    if (url.pathname === "/") {
+      response.statusCode = 200;
+      response.setHeader("Content-Type", "text/plain");
+      response.end("Hello world");
+    } else {
+      response.statusCode = 404;
+      response.end("Not Found");
+    }
   }
 }
