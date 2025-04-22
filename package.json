@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --experimental-transform-types --watch ./examples/main.ts"
+    "dev": "node --inspect --experimental-transform-types --watch ./examples/main.ts"
   },
   "keywords": [],
   "author": "",

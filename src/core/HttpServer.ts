@@ -19,7 +19,7 @@ export class HttpServer {
     response: http.ServerResponse,
   ) {
     assert(typeof request.url === "string");
-    const url = URL.parse(request.url);
+    const url = URL.parse(request.url, `http://${this.config.hostname}`);
     assert(url instanceof URL);
 
     if (url.pathname === "/") {
