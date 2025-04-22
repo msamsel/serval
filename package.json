@@ -8,17 +8,20 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --experimental-transform-types --watch ./src/index.ts"
+    "dev": "node --experimental-transform-types --watch ./examples/main.ts"
   },
   "keywords": [],
   "author": "",
   "license": "Apache-2.0",
+  "type": "module",
   "devDependencies": {
-    "@eslint/js": "^9.25.1",
     "@types/node": "^22.14.1",
     "eslint": "^9.25.1",
     "prettier": "3.5.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.31.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0"
   }
 }
