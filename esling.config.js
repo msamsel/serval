@@ -5,4 +5,16 @@ export default tseslint.config(
   eslint.configs.recommended,
   tseslint.configs.recommendedTypeChecked,
   tseslint.configs.stylisticTypeChecked,
+  {
+    rules: {
+      "import/extensions": [
+        "error",
+        "ignorePackages",
+        {
+          ts: "always",
+          tsx: "always",
+        },
+      ],
+    },
+  },
 );
