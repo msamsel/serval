@@ -6,6 +6,4 @@ export interface Route {
   handler: RouteHandler;
 }
 
-export interface RouteHandler {
-  (req: http.IncomingMessage, res: http.ServerResponse): void;
-}
+export type RouteHandler = (req: http.IncomingMessage, res: http.ServerResponse) => void;

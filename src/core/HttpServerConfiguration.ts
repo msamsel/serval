@@ -21,6 +21,6 @@ export const getDefault = (): HttpServerConfiguration => {
   return {
     version: "1",
     port,
-    hostname: process.env.HOSTNAME || "localhost",
+    hostname: process.env.HOSTNAME ?? "localhost",
   };
 };

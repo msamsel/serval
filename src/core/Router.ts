@@ -1,8 +1,8 @@
-import { Logger } from "./Logger";
-import { Route, RouteHandler } from "./Route";
+import { Logger } from "./Logger.ts";
+import { Route, RouteHandler } from "./Route.ts";
 
 export class Router {
-  private routes: Map<string, Route> = new Map();
+  private routes = new Map<string, Route>();
 
   constructor(private readonly logger: Logger) {}
 
