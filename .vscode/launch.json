@@ -19,6 +19,17 @@
             "sourceMaps": true,
             "smartStep": true,
             "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach to Process",
+            "port": 9229,
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "sourceMaps": true,
+            "smartStep": true
         }
     ]
 }

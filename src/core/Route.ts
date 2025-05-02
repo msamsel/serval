@@ -1,8 +1,9 @@
-import type * as http from "node:http";
+import type * as http from 'node:http';
+import { HttpRequest } from './HttpRequest.ts';
 
 export interface Route {
   path: string;
-  method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "OPTIONS";
+  method: HttpRequest['method'];
   handler: RouteHandler;
 }
 
