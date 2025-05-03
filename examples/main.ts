@@ -14,8 +14,6 @@ app.get('/users', (req, res) => {
 });
 
 app.post('/users', (req, res) => {
-  debugger;
-
   res.writeHead(201, { 'Content-Type': 'application/json' });
   res.end(JSON.stringify({ users: [] }));
 });

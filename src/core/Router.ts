@@ -1,4 +1,4 @@
-import { HttpRequest } from './HttpRequest.ts';
+import { HttpRequestHeader } from './HttpRequestHeader.ts';
 import { Logger } from './Logger.ts';
 import type { Route, RouteHandler } from './Route.ts';
 
@@ -7,7 +7,7 @@ export class Router {
 
   constructor(private readonly logger: Logger) {}
 
-  public addRoute(path: string, method: HttpRequest['method'], handler: RouteHandler) {
+  public addRoute(path: string, method: HttpRequestHeader['method'], handler: RouteHandler) {
     const key = this.key(method, path);
     if (this.routes.has(key)) {
       throw new Error(`Route ${path} already exists`);
@@ -19,14 +19,14 @@ export class Router {
       handler,
     });
 
-    this.logger.log(`Added route ${path} ${method}`);
+    this.logger.log(`Added route: ${method} ${path} `);
   }
 
-  public getRoute(method: HttpRequest['method'], path: string): Route | undefined {
+  public getRoute(method: HttpRequestHeader['method'], path: string): Route | undefined {
     return this.routes.get(this.key(method, path));
   }
 
-  public key(method: HttpRequest['method'], path: string): string {
+  public key(method: HttpRequestHeader['method'], path: string): string {
     return `${path}:${method}`;
   }
 }

@@ -4,6 +4,7 @@ import { Logger } from './Logger.ts';
 import { Router } from './Router.ts';
 import type { RouteHandler } from './Route.ts';
 import { HttpRequest } from './HttpRequest.ts';
+import { HttpRequestHeader } from './HttpRequestHeader.ts';
 
 export class HttpServer {
   private readonly server: http.Server;
@@ -14,7 +15,9 @@ export class HttpServer {
     private readonly config: HttpServerConfiguration,
     private readonly logger: Logger,
   ) {
-    this.server = http.createServer(this.handleRequest.bind(this));
+    this.server = http.createServer((req, res) => {
+      void this.handleRequest(req, res);
+    });
     this.server.listen(this.config.port, this.config.hostname, () => {
       this.logger.log(`Server listening on: ${this.config.hostname}:${this.config.port}`);
     });
@@ -42,22 +45,35 @@ export class HttpServer {
     this.router.addRoute(path, 'PATCH', handler);
   }
 
-  private handleRequest(request: http.IncomingMessage, response: http.ServerResponse) {
-    const httpRequest = HttpRequest.fromMessage(this.config.hostname, request);
+  private async handleRequest(request: http.IncomingMessage, response: http.ServerResponse): Promise<void> {
+    const header = HttpRequestHeader.fromMessage(`http://${this.config.hostname}`, request);
 
-    const route = this.router.getRoute(httpRequest.method, httpRequest.path);
+    const route = this.router.getRoute(header.method, header.path);
 
     if (!route) {
       this.sendNotFound(response);
       return;
     }
 
-    if (route.method !== httpRequest.method) {
+    if (route.method !== header.method) {
       this.sendMethodNotAllowed(response);
       return;
     }
 
-    route.handler(request, response);
+    return new Promise((resolve) => {
+      let rawData = '';
+
+      request.on('data', (chunk) => {
+        rawData += chunk;
+      });
+
+      request.on('end', () => {
+        const httpRequest = new HttpRequest(header, rawData, request);
+
+        route.handler(httpRequest, response);
+        resolve();
+      });
+    });
   }
 
   private sendNotFound(response: http.ServerResponse) {
