@@ -5,7 +5,7 @@ export class HttpRequest {
   constructor(
     public readonly header: HttpRequestHeader,
     public readonly body: string,
-    public readonly message: http.IncomingMessage,
+    public readonly _message: http.IncomingMessage,
   ) {}
 
   get path(): string {
