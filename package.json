@@ -17,15 +17,16 @@
   "license": "Apache-2.0",
   "type": "module",
   "devDependencies": {
-    "@eslint/js": "^9.25.1",
-    "@types/node": "^22.14.1",
-    "@typescript-eslint/parser": "^8.31.1",
-    "eslint": "^9.25.1",
+    "@eslint/js": "^9.27.0",
+    "@types/node": "^22.15.18",
+    "@typescript-eslint/parser": "^8.32.1",
+    "eslint": "^9.27.0",
     "eslint-import-resolver-typescript": "^4.3.4",
     "eslint-plugin-import": "^2.31.0",
     "prettier": "3.5.3",
+    "supertest": "^7.1.1",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.31.0"
+    "typescript-eslint": "^8.32.1"
   },
   "dependencies": {
     "dotenv": "^16.5.0"
