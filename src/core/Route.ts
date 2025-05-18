@@ -1,6 +1,6 @@
 import type * as http from 'node:http';
-import { HttpRequest } from './HttpRequest.ts';
-import { HttpRequestHeader } from './HttpRequestHeader.ts';
+import { HttpRequest } from './HttpRequest';
+import { HttpRequestHeader } from './HttpRequestHeader';
 
 export interface Route {
   path: string;

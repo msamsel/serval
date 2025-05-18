@@ -1,10 +1,10 @@
-import { type HttpServerConfiguration } from './HttpServerConfiguration.ts';
+import { type HttpServerConfiguration } from './HttpServerConfiguration';
 import * as http from 'node:http';
-import { Logger } from './Logger.ts';
-import { Router } from './Router.ts';
-import type { RouteHandler } from './Route.ts';
-import { HttpRequest } from './HttpRequest.ts';
-import { HttpRequestHeader } from './HttpRequestHeader.ts';
+import { Logger } from './Logger';
+import { Router } from './Router';
+import type { RouteHandler } from './Route';
+import { HttpRequest } from './HttpRequest';
+import { HttpRequestHeader } from './HttpRequestHeader';
 
 export class HttpServer {
   private readonly server: http.Server;

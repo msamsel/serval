@@ -2,8 +2,16 @@
   "name": "serval",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
   "files": [
     "dist"
   ],
@@ -15,7 +23,8 @@
     "dev": "tsx --inspect --watch ./examples/main.ts",
     "lint": "eslint ./src --ext .ts",
     "lint:fix": "eslint ./src --ext .ts --fix",
-    "build": "tsc",
+    "build": "tsup",
+    "build:watch": "tsup --watch",
     "clean": "rm -rf dist",
     "prepublishOnly": "npm run clean && npm run build"
   },

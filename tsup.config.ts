@@ -9,4 +9,12 @@ export default defineConfig({
   clean: true,
   minify: false,
   treeshake: true,
+  outExtension({ format }) {
+    return {
+      js: format === 'cjs' ? '.js' : '.mjs',
+    }
+  },
+  platform: 'node',
+  target: 'node22',
+  skipNodeModulesBundle: true,
 })

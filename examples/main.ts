@@ -1,5 +1,5 @@
-import { Logger } from '../src/core/Logger.ts';
-import { HttpServer, config } from '../src/index.ts';
+import { Logger } from '../src/core/Logger';
+import { HttpServer, config } from '../src/index';
 
 const app = new HttpServer(config.getDefault(), new Logger());
 

@@ -1,5 +1,5 @@
 import type * as http from 'node:http';
-import { HttpRequestHeader } from './HttpRequestHeader.ts';
+import { HttpRequestHeader } from './HttpRequestHeader';
 
 export class HttpRequest {
   constructor(

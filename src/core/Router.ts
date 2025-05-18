@@ -1,6 +1,6 @@
-import { HttpRequestHeader } from './HttpRequestHeader.ts';
-import { Logger } from './Logger.ts';
-import type { Route, RouteHandler } from './Route.ts';
+import { HttpRequestHeader } from './HttpRequestHeader';
+import { Logger } from './Logger';
+import type { Route, RouteHandler } from './Route';
 
 export class Router {
   private routes = new Map<string, Route>();
